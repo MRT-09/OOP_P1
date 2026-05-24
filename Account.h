@@ -19,3 +19,13 @@ public:
     CheckingAccount(const std::string& accountNumber, double initialBalance);
     bool withdraw(double amount) override;
 };
+
+class SavingsAccount : public Account {
+private:
+    double interestRate;
+public:
+    SavingsAccount(const std::string& accountNumber, double initialBalance);
+    SavingsAccount(const std::string& accountNumber, double initialBalance, double interestRate);
+    void applyInterest();
+    bool withdraw(double amount) override;
+};
