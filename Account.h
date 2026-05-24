@@ -29,3 +29,11 @@ public:
     void applyInterest();
     bool withdraw(double amount) override;
 };
+
+class CreditAccount : public Account {
+private:
+    double creditLimit;
+public:
+    CreditAccount(const std::string& accountNumber, double initialBalance, double creditLimit);
+    bool withdraw(double amount) override;
+};

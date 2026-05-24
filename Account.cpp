@@ -46,3 +46,13 @@ bool SavingsAccount::withdraw(double amount) {
     }
     return false;
 }
+
+CreditAccount::CreditAccount(const string& accountNumber, double initialBalance, double creditLimit) : Account(accountNumber, initialBalance), creditLimit(creditLimit) {}
+
+bool CreditAccount::withdraw(double amount) {
+    if (amount > 0 && (balance + creditLimit) >= amount) {
+        balance -= amount;
+        return true;
+    }
+    return false;
+}
