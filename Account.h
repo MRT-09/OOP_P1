@@ -1,10 +1,13 @@
 #pragma once
 #include <string>
+#include <vector>
+#include "Transaction.h"
 
 class Account {
 protected:
     std::string accountNumber;
     double balance;
+    std::vector<Transaction> transactionHistory;
 public:
     Account(const std::string& accountNumber, double initialBalance);
     virtual ~Account() = default;
