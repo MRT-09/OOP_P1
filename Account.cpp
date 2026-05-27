@@ -2,15 +2,8 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include "utils.h"
 using namespace std;
-
-string getCurrentDate() {
-    time_t now = time(nullptr);
-    tm* ltm = localtime(&now);
-    char buffer[16];
-    strftime(buffer, sizeof(buffer), "%d-%m-%Y", ltm);
-    return string(buffer);
-}
 
 Account::Account(const string& accountNumber, double initialBalance) {
     this->accountNumber = accountNumber;
