@@ -4,6 +4,7 @@
 #include "Transaction.h"
 
 class Account {
+    friend class User;
 protected:
     std::string accountNumber;
     double balance;
