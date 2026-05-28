@@ -11,16 +11,21 @@ Account::Account(const string& accountNumber, double initialBalance) {
 }
 
 void Account::deposit(double amount) {
-    if (amount > 0)
+    if (amount > 0) {
         balance += amount;
-    transactionHistory.push_back(Transaction(amount, getCurrentDate(), "Deposit"));
+        transactionHistory.push_back(Transaction(amount, getCurrentDate(), "Deposit"));
+    }
 }
 
 void Account::transfer(Account& recipient, double amount) {
-    if (amount > 0 && withdraw(amount))
+    if (amount <= 0 || &recipient == this)
+        return;
+
+    if (withdraw(amount)) {
         recipient.deposit(amount);
-    transactionHistory.push_back(Transaction(-amount, getCurrentDate(), "Transfer to " + recipient.accountNumber));
-    recipient.transactionHistory.push_back(Transaction(amount, getCurrentDate(), "Transfer from " + accountNumber));
+        transactionHistory.push_back(Transaction(-amount, getCurrentDate(), "Transfer to " + recipient.accountNumber));
+        recipient.transactionHistory.push_back(Transaction(amount, getCurrentDate(), "Transfer from " + accountNumber));
+    }
 }
 
 void Account::printInfo() const {
