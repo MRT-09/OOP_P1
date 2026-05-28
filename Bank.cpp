@@ -19,5 +19,5 @@ void Bank::generateReport() const {
         cout << "User ID: " << user.id << ", Name: " << user.name << "\n";
     cout << "Bank Transaction Report:\n";
     for (const auto& transaction : transactionHistory)
-        cout << "Date: " << transaction.getDate() << ", Type: " << transaction.getType() << ", Amount: " << transaction.getAmount() << "\n";
+        cout << "Date: " << transaction.date << ", Type: " << transaction.type << ", Amount: " << transaction.amount << "\n";
 }

@@ -3,6 +3,7 @@
 
 class Transaction {
     friend class Account;
+    friend class Bank;
 private:
     double amount;
     std::string date, type;
