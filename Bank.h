@@ -1,7 +1,10 @@
 #pragma once
+#include <string>
 #include <vector>
 #include "User.h"
 #include "Transaction.h"
+
+const std::string REPORTS_DIRECTORY = "Reports/";
 
 class Bank {
 private:
