@@ -6,6 +6,7 @@ class Transaction {
 private:
     double amount;
     std::string date, type;
+    bool suspicious;
 public:
     Transaction(double amt, const std::string& dt, const std::string& tp);
 };
