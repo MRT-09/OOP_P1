@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 
+#define MAX_TRANSACTION_AMOUNT 5000
+
 class Transaction {
     friend class Account;
     friend class Bank;
