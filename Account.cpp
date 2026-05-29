@@ -44,7 +44,7 @@ bool CheckingAccount::withdraw(double amount) {
     return false;
 }
 
-SavingsAccount::SavingsAccount(const string& accountNumber, double initialBalance) : Account(accountNumber, initialBalance), interestRate(0.02) {}
+SavingsAccount::SavingsAccount(const string& accountNumber, double initialBalance) : Account(accountNumber, initialBalance), interestRate(DEFAULT_INTEREST_RATE) {}
 SavingsAccount::SavingsAccount(const string& accountNumber, double initialBalance, double interestRate) : Account(accountNumber, initialBalance), interestRate(interestRate) {}
 
 void SavingsAccount::applyInterest() {

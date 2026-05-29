@@ -3,6 +3,8 @@
 #include <vector>
 #include "Transaction.h"
 
+#define DEFAULT_INTEREST_RATE 0.02
+
 class Account {
     friend class User;
 protected:
