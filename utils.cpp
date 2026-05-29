@@ -14,7 +14,7 @@ string getCurrentDate() {
 string getCurrentDateTime() {
     time_t now = time(nullptr);
     tm* ltm = localtime(&now);
-    char buffer[20];
-    strftime(buffer, sizeof(buffer), "%H:%M:%S", ltm);
-    return getCurrentDate() + " " + string(buffer);
+    char buffer[32];
+    strftime(buffer, sizeof(buffer), "%d-%m-%Y_%H-%M-%S", ltm);
+    return string(buffer);
 }
