@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "Transaction.h"
+#include <memory>
 
 #define DEFAULT_INTEREST_RATE 0.02
 
@@ -16,6 +17,7 @@ public:
     virtual ~Account() = default;
     virtual void deposit(double amount);
     virtual bool withdraw(double amount) = 0;
+    virtual std::unique_ptr<Account> clone() const = 0;
     virtual void transfer(Account& recipient, double amount);
     virtual void printInfo() const;
 };
@@ -24,6 +26,7 @@ class CheckingAccount : public Account {
 public:
     CheckingAccount(const std::string& accountNumber, double initialBalance);
     bool withdraw(double amount) override;
+    std::unique_ptr<Account> clone() const override;
 };
 
 class SavingsAccount : public Account {
@@ -34,6 +37,7 @@ public:
     SavingsAccount(const std::string& accountNumber, double initialBalance, double interestRate);
     void applyInterest();
     bool withdraw(double amount) override;
+    std::unique_ptr<Account> clone() const override;
 };
 
 class CreditAccount : public Account {
@@ -42,4 +46,5 @@ private:
 public:
     CreditAccount(const std::string& accountNumber, double initialBalance, double creditLimit);
     bool withdraw(double amount) override;
+    std::unique_ptr<Account> clone() const override;
 };

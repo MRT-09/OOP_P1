@@ -3,6 +3,7 @@
 #include <string>
 #include <ctime>
 #include "utils.h"
+#include <memory>
 using namespace std;
 
 Account::Account(const string& accountNumber, double initialBalance) {
@@ -44,6 +45,10 @@ bool CheckingAccount::withdraw(double amount) {
     return false;
 }
 
+unique_ptr<Account> CheckingAccount::clone() const {
+    return make_unique<CheckingAccount>(*this);
+}
+
 SavingsAccount::SavingsAccount(const string& accountNumber, double initialBalance) : Account(accountNumber, initialBalance), interestRate(DEFAULT_INTEREST_RATE) {}
 SavingsAccount::SavingsAccount(const string& accountNumber, double initialBalance, double interestRate) : Account(accountNumber, initialBalance), interestRate(interestRate) {}
 
@@ -60,6 +65,10 @@ bool SavingsAccount::withdraw(double amount) {
     return false;
 }
 
+unique_ptr<Account> SavingsAccount::clone() const {
+    return make_unique<SavingsAccount>(*this);
+}
+
 CreditAccount::CreditAccount(const string& accountNumber, double initialBalance, double creditLimit) : Account(accountNumber, initialBalance), creditLimit(creditLimit) {}
 
 bool CreditAccount::withdraw(double amount) {
@@ -69,4 +78,8 @@ bool CreditAccount::withdraw(double amount) {
         return true;
     }
     return false;
+}
+
+std::unique_ptr<Account> CreditAccount::clone() const {
+    return std::make_unique<CreditAccount>(*this);
 }
