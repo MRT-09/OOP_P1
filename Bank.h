@@ -13,6 +13,9 @@ private:
 public:
     Bank() = default;
     void addUser(const User& user);
+    User* findUserById(int id);
+    const User* findUserById(int id) const;
+    const std::vector<User>& getUsers() const;
     void processTransaction(const Transaction& transaction);
     void generateReport() const;
 };

@@ -12,6 +12,26 @@ void Bank::addUser(const User& user) {
     users.push_back(user);
 }
 
+User* Bank::findUserById(int id) {
+    for (auto& user : users) {
+        if (user.id == id)
+            return &user;
+    }
+    return nullptr;
+}
+
+const User* Bank::findUserById(int id) const {
+    for (const auto& user : users) {
+        if (user.id == id)
+            return &user;
+    }
+    return nullptr;
+}
+
+const vector<User>& Bank::getUsers() const {
+    return users;
+}
+
 void Bank::processTransaction(const Transaction& transaction) {
     transactionHistory.push_back(transaction);
 }

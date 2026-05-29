@@ -18,6 +18,12 @@ public:
     User(int id, const std::string& name);
     User(const User& other);
     User& operator=(const User& other);
+    int getId() const;
+    const std::string& getName() const;
+    std::size_t accountCount() const;
+    Account* getAccount(std::size_t index);
+    const Account* getAccount(std::size_t index) const;
     void addAccount(const Account& account);
     void getAccounts() const;
+    void printAccounts() const;
 };
